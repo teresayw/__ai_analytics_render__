@@ -25,7 +25,9 @@ import {
   Edit2,
   Heart,
   ExternalLink,
-  MessageSquare
+  MessageSquare,
+  Moon,
+  Sun
 } from "lucide-react";
 import { SAMPLE_TRANSCRIPTS } from "./sampleData";
 import { HistoryItem, MeetingSummaryResponse } from "./types";
@@ -38,6 +40,7 @@ export default function App() {
   const [targetLanguage, setTargetLanguage] = useState("none");
   
   // 執行與處理狀態
+  const [themeMode, setThemeMode] = useState<'light' | 'dark'>('dark');
   const [loading, setLoading] = useState(false);
   const [loadingStep, setLoadingStep] = useState(0);
   const [result, setResult] = useState<MeetingSummaryResponse | null>(null);
@@ -73,6 +76,23 @@ export default function App() {
       console.error("無法自 LocalStorage 讀取歷史紀錄", e);
     }
   }, []);
+
+  // 1a. 初始化讀取主題模式
+  useEffect(() => {
+    try {
+      const storedTheme = localStorage.getItem("themeMode");
+      if (storedTheme === "light" || storedTheme === "dark") {
+        setThemeMode(storedTheme);
+      }
+    } catch (e) {
+      console.error("無法自 LocalStorage 讀取主題設定", e);
+    }
+  }, []);
+
+  // 1b. 當主題改變時儲存至 LocalStorage
+  useEffect(() => {
+    localStorage.setItem("themeMode", themeMode);
+  }, [themeMode]);
 
   // 2. 當 historyList 變動時儲存至 LocalStorage
   const saveHistoryToStorage = (newList: HistoryItem[]) => {
@@ -313,8 +333,10 @@ export default function App() {
     return shareText;
   };
 
+  const containerClassName = `min-h-screen ${themeMode === 'dark' ? 'dark-mode bg-slate-950 text-slate-100 selection:bg-indigo-500 selection:text-slate-950' : 'bg-[#F3F4F6] text-slate-800 selection:bg-indigo-100 selection:text-indigo-900'} font-sans antialiased flex flex-col`;
+
   return (
-    <div className="min-h-screen bg-[#F3F4F6] text-slate-800 font-sans antialiased selection:bg-indigo-100 selection:text-indigo-900 flex flex-col">
+    <div className={containerClassName}>
       
       {/* 頂部華麗橫幅 Header */}
       <nav className="sticky top-0 z-40 bg-white border-b border-slate-200 px-8 py-4 flex items-center justify-between">
@@ -334,8 +356,14 @@ export default function App() {
           <div className="flex items-center gap-2 text-sm text-slate-500 font-medium hidden md:flex">
             <span className="w-2 h-2 rounded-full bg-green-500"></span>
             Gemini Flash 模型已就緒
-          </div>
-          <button 
+          </div>          <button
+            type="button"
+            onClick={() => setThemeMode((prev) => (prev === 'dark' ? 'light' : 'dark'))}
+            className="flex items-center space-x-1.5 text-xs text-slate-500 hover:text-indigo-600 hover:bg-slate-100 px-3 py-2 rounded-xl transition-all duration-200 font-semibold border border-slate-200 bg-white"
+          >
+            {themeMode === 'dark' ? <Sun className="w-3.5 h-3.5" /> : <Moon className="w-3.5 h-3.5" />}
+            <span>{themeMode === 'dark' ? '切換亮色模式' : '切換暗色模式'}</span>
+          </button>          <button 
             type="button"
             onClick={() => {
               setTranscript("");
@@ -927,14 +955,14 @@ export default function App() {
             className="fixed bottom-6 right-6 z-50 flex items-center space-x-2 px-4 py-3 rounded-xl shadow-xl text-xs font-bold leading-normal border max-w-sm"
             style={{
               backgroundColor: 
-                toast.type === "success" ? "#ecfdf5" : 
-                toast.type === "error" ? "#fef2f2" : "#f0f9ff",
+                toast.type === "success" ? "#0f172a" : 
+                toast.type === "error" ? "#1f0f1e" : "#0f172a",
               borderColor: 
-                toast.type === "success" ? "#a7f3d0" : 
-                toast.type === "error" ? "#fecaca" : "#bae6fd",
+                toast.type === "success" ? "#2563eb" : 
+                toast.type === "error" ? "#be185d" : "#2563eb",
               color: 
-                toast.type === "success" ? "#065f46" : 
-                toast.type === "error" ? "#991b1b" : "#075985"
+                toast.type === "success" ? "#bfdbfe" : 
+                toast.type === "error" ? "#fecdd3" : "#bfdbfe"
             }}
           >
             {toast.type === "success" && <Check className="w-4 h-4 text-emerald-600 shrink-0" />}

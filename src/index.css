@@ -7,6 +7,94 @@
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 }
 
+.dark-mode {
+  background-color: #020617;
+  color: #e2e8f0;
+}
+
+.dark-mode .bg-white {
+  background-color: #0f172a;
+}
+
+.dark-mode .bg-slate-50,
+.dark-mode .bg-slate-50\/50,
+.dark-mode .bg-slate-50\/60,
+.dark-mode .bg-slate-50\/80,
+.dark-mode .bg-slate-100\/40,
+.dark-mode .bg-slate-100\/30,
+.dark-mode .bg-slate-100\/50,
+.dark-mode .bg-slate-150,
+.dark-mode .bg-slate-200,
+.dark-mode .bg-slate-200\/50,
+.dark-mode .bg-slate-100 {
+  background-color: #111827;
+}
+
+.dark-mode .bg-indigo-50 {
+  background-color: #1e293b;
+}
+
+.dark-mode .bg-rose-50 {
+  background-color: #4b1d24;
+}
+
+.dark-mode .bg-amber-50 {
+  background-color: #422006;
+}
+
+.dark-mode .text-slate-900,
+.dark-mode .text-slate-800,
+.dark-mode .text-slate-700,
+.dark-mode .text-slate-600,
+.dark-mode .text-slate-500,
+.dark-mode .text-slate-400,
+.dark-mode .text-slate-450 {
+  color: #d1d5db;
+}
+
+.dark-mode .text-slate-400 {
+  color: #94a3b8;
+}
+
+.dark-mode .border-slate-200,
+.dark-mode .border-slate-150,
+.dark-mode .border-slate-100,
+.dark-mode .border-slate-300,
+.dark-mode .border-slate-200\/40,
+.dark-mode .border-slate-100\/40,
+.dark-mode .border-indigo-100\/50,
+.dark-mode .border-indigo-100,
+.dark-mode .border-indigo-500\/10 {
+  border-color: #334155;
+}
+
+.dark-mode .hover\:bg-slate-100:hover,
+.dark-mode .hover\:bg-slate-50:hover,
+.dark-mode .hover\:bg-slate-50\/90:hover {
+  background-color: #111827;
+}
+
+.dark-mode textarea,
+.dark-mode select,
+.dark-mode input {
+  background-color: #111827;
+  color: #e2e8f0;
+  border-color: #334155;
+}
+
+.dark-mode textarea::placeholder {
+  color: #64748b;
+}
+
+.dark-mode .shadow-xs {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+.dark-mode ::selection {
+  background: rgba(99, 102, 241, 0.4);
+  color: #e2e8f0;
+}
+
 /* 針對 Markdown 渲染區 (markdown-body) 的商務專業全排版樣式 */
 .markdown-body {
   font-family: var(--font-sans);
