@@ -1,0 +1,8 @@
+{
+  "name": "Remix: AI 會議記錄生成與翻譯工具(徐國堂)",
+  "description": "提供會議逐字稿的智慧總結、重點提取、行動清單生成以及各國語言翻譯的精緻網頁工具。",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

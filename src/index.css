@@ -1,0 +1,182 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@450;500&display=swap');
+
+@theme {
+  --font-sans: "Inter", "Noto Sans TC", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* 針對 Markdown 渲染區 (markdown-body) 的商務專業全排版樣式 */
+.markdown-body {
+  font-family: var(--font-sans);
+  color: #334155; /* slate-700 */
+  line-height: 1.75;
+  font-size: 0.875rem; /* 14px */
+}
+
+/* 標題與分組 */
+.markdown-body h1 {
+  font-size: 1.5rem; /* 24px */
+  font-weight: 700;
+  color: #0f172a; /* slate-900 */
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-b-width: 1px;
+  border-bottom-color: #f1f5f9; /* slate-100 */
+  letter-spacing: -0.025em;
+  display: flex;
+  align-items: center;
+}
+
+.markdown-body h2 {
+  font-size: 1.25rem; /* 20px */
+  font-weight: 700;
+  color: #1e293b; /* slate-800 */
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  padding-left: 0.65rem;
+  border-left-width: 4px;
+  border-left-color: #4f46e5; /* indigo-600 */
+  letter-spacing: -0.02em;
+}
+
+.markdown-body h3 {
+  font-size: 1.05rem; /* 16.8px */
+  font-weight: 600;
+  color: #334155; /* slate-700 */
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+/* 段落與清單 */
+.markdown-body p {
+  margin-bottom: 0.85rem;
+  text-align: justify;
+}
+
+.markdown-body ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 0.85rem;
+}
+
+.markdown-body ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin-bottom: 0.85rem;
+}
+
+.markdown-body li {
+  margin-bottom: 0.35rem;
+}
+
+.markdown-body li::marker {
+  color: #6366f1; /* indigo-500 為點綴顏色 */
+}
+
+/* 強調、線條與引用 */
+.markdown-body strong {
+  font-weight: 750;
+  color: #0f172a; /* slate-900 */
+}
+
+.markdown-body hr {
+  height: 1px;
+  background-color: #e2e8f0; /* slate-200 */
+  border: none;
+  margin: 1.5rem 0;
+}
+
+.markdown-body blockquote {
+  border-left-width: 4px;
+  border-left-color: #cbd5e1; /* slate-300 */
+  padding-left: 1rem;
+  font-style: italic;
+  color: #64748b; /* slate-500 */
+  margin: 1rem 0;
+}
+
+/* 行內程式碼與預格式化 text */
+.markdown-body code {
+  font-family: var(--font-mono);
+  font-size: 0.825rem;
+  background-color: #f1f5f9; /* slate-100 */
+  padding: 0.15rem 0.35rem;
+  border-radius: 0.25rem;
+  color: #b91c1c; /* red-700 */
+}
+
+.markdown-body pre {
+  background-color: #1e293b; /* slate-800 */
+  color: #f8fafc;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  overflow-x: auto;
+  margin-bottom: 1rem;
+}
+
+.markdown-body pre code {
+  background-color: transparent;
+  padding: 0;
+  color: inherit;
+  font-size: 0.85rem;
+}
+
+/* 表格優化 (適合排版議程或對照表) */
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.25rem 0;
+  font-size: 0.8rem;
+  text-align: left;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.markdown-body th {
+  background-color: #f8fafc; /* slate-50 */
+  color: #334155;
+  font-weight: 600;
+  padding: 0.65rem 0.85rem;
+  border-bottom-width: 1.5px;
+  border-bottom-color: #cbd5e1;
+}
+
+.markdown-body td {
+  padding: 0.65rem 0.85rem;
+  border-bottom-width: 1px;
+  border-bottom-color: #f1f5f9;
+  color: #475569;
+}
+
+.markdown-body tr:nth-child(even) {
+  background-color: #f8fafc/50;
+}
+
+.markdown-body tr:hover {
+  background-color: #f1f5f9/40;
+}
+
+/* 待辦事項 (Task Lists) 微調 */
+.markdown-body input[type="checkbox"] {
+  border-radius: 0.25rem;
+  border-color: #cbd5e1;
+  color: #4f46e5;
+  margin-right: 0.5rem;
+  transform: scale(1.1);
+  accent-color: #4f46e5;
+  cursor: default;
+}
+
+/* 自訂淡入淡出動畫 */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
